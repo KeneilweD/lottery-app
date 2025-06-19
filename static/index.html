@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Lottery App</title>
+  </head>
+  <body style="text-align: center; margin-top: 50px">
+    <h1>🎉 Lottery Draw</h1>
+
+    <h3>Add Participant</h3>
+    <input type="text" id="nameInput" placeholder="Enter name" />
+    <button onclick="addName()">Add</button>
+
+    <p id="addStatus" style="color: green"></p>
+
+    <hr style="margin: 30px" />
+
+    <h3>Draw Winner</h3>
+    <button onclick="drawWinner()">Draw</button>
+    <p id="winner" style="font-weight: bold"></p>
+
+    <script>
+      async function addName() {
+        const name = document.getElementById("nameInput").value.trim();
+        if (!name) return alert("Please enter a name.");
+
+        const res = await fetch("/api/add", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ name: name }),
+        });
+
+        const data = await res.json();
+        document.getElementById("addStatus").textContent = data.message;
+        document.getElementById("nameInput").value = "";
+      }
+
+      async function drawWinner() {
+        const res = await fetch("/api/draw");
+        const data = await res.json();
+        document.getElementById("winner").textContent = data.winner
+          ? `🎊 Winner: ${data.winner}`
+          : data.error;
+      }
+    </script>
+  </body>
+</html>
