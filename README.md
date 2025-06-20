@@ -1,3 +1,27 @@
+
+🎯
+I built a Flask-based API that allows users to submit participants and randomly draw a winner. The frontend interacts with the backend using modern fetch() requests, and the data is exchanged via JSON.
+-An Api(Application Programming Interfaces) lets the front end to talk to the backend
+
+ The idea sparked when I was practising Function generators - random number
+https://www.geeksforgeeks.org/html/javascript-application-for-random-number-generator/
+ 
+Aloterry App was one of the real life ideas i wanted to try,but the winner is chosen in backend part 
+
+lottery_app/
+├── app.py
+└── static/
+    └── index.html
+
+What I learned 
+
+We Use async(used to handle tasks that take time)and await to pause code until a result is ready without freezing the app.
+
+async-Marks a function as asynchronous
+await-Waits for a promise to resolve
+Benefit	-Non-blocking, cleaner code
+Common Uses-API calls, delays, event handling
+Flask	-Python tool for building websites or APIs
 API	-A system that allows apps to communicate
 Endpoint	-A specific URL (like /api/quote) your API responds to
 One Endpoint	-Your API has only one route available to use (e.g., /api/quote)
